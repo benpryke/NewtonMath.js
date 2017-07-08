@@ -1,11 +1,13 @@
-NewtonMath = (function () {
+(function () {
     'use strict';
     
+    // Newton API endpoints
     const ENDPOINTS = ['simplify', 'factor', 'derive', 'integrate', 'zeroes',
                        'tangent', 'area', 'cos', 'sin', 'tan', 'arccos',
                        'arcsin', 'arctan', 'abs', 'log'];
     
-    function create_promise (operation, expression) {
+    // Core functions
+    function createPromise (operation, expression) {
         return new Promise(function (resolve, reject) {
             let base = 'https://newton.now.sh/',
                 url = base + operation + '/' + encodeURIComponent(expression),
@@ -28,16 +30,16 @@ NewtonMath = (function () {
         });
     }
     
-    function send_request (operation, expression, callback) {
-        create_promise(operation, expression)
-        .then(response => callback(handle_response(JSON.parse(response))))
-        .catch(error => print_error('HTTP status', error.status, error.msg));
+    function sendRequest (operation, expression, callback) {
+        createPromise(operation, expression)
+        .then(response => callback(handleResponse(JSON.parse(response))))
+        .catch(error => printError('HTTP status', error.status, error.msg));
     }
     
-    function handle_response (response) {
+    function handleResponse (response) {
         // Was the expression valid?
         if (response.hasOwnProperty('error')) {
-            print_error(response['error']);
+            printError(response['error']);
         } else {
             let result = response['result'];
             
@@ -55,17 +57,36 @@ NewtonMath = (function () {
         }
     }
     
-    function print_error () {
+    function printError () {
         console.error('NewtonMath error:', ...arguments);
     }
     
-    // Define interface to export
-    let core = {},
+    let root = this,
+        prevNewtonMath = root.NewtonMath,
+        core = {},
         NewtonMath = {};
+    
+    // Expose the module
+    if (typeof exports !== 'undefined') {
+        if (typeof module !== 'undefined' && module.exports) {
+            exports = module.exports = mymodule
+        }
+        
+        exports.mymodule = mymodule
+    } else {
+        root.mymodule = mymodule
+    }
+    
+    // Allow module global to be renamed to remove conflicts with other vars
+    // of the same name (same concept as jQuery method of the same name)
+    NewtonMath.noConflict = function () {
+        root.NewtonMath = prevNewtonMath;
+        return NewtonMath;
+    };
     
     // Instantiate basic endpoint functionality
     ENDPOINTS.forEach(endpoint => {
-        core[endpoint] = (expression, callback) => send_request(endpoint, expression, callback);
+        core[endpoint] = (expression, callback) => sendRequest(endpoint, expression, callback);
         NewtonMath[endpoint] = core[endpoint];
     });
     
@@ -81,4 +102,4 @@ NewtonMath = (function () {
     
     // Expose NewtonMath object
     return NewtonMath;
-})();
+}).call(this);
