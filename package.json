@@ -1,0 +1,14 @@
+{
+  "name": "newtonmath.js",
+  "version": "1.0.0",
+  "description": "JavaScript wrapper for the newton math API",
+  "main": "newtonmath.js",
+  "keywords": [
+    "newton",
+    "API",
+    "math",
+    "maths"
+  ],
+  "author": "Benjamin Pryke",
+  "license": "MIT"
+}
