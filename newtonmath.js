@@ -69,12 +69,12 @@
     // Expose the module
     if (typeof exports !== 'undefined') {
         if (typeof module !== 'undefined' && module.exports) {
-            exports = module.exports = mymodule
+            exports = module.exports = NewtonMath;
         }
         
-        exports.mymodule = mymodule
+        exports.NewtonMath = NewtonMath;
     } else {
-        root.mymodule = mymodule
+        root.NewtonMath = NewtonMath;
     }
     
     // Allow module global to be renamed to remove conflicts with other vars
