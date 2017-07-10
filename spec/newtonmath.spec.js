@@ -1,3 +1,5 @@
+'use strict';
+
 let NewtonMath = require('..');
 
 describe('NewtonMath', function () {
@@ -20,7 +22,7 @@ describe('NewtonMath', function () {
     };
     
     it('endpoint methods must be exposed', function () {
-        for (op in tests) {
+        for (let op in tests) {
             expect(typeof NewtonMath[op]).toBe('function');
         }
     });
@@ -47,7 +49,7 @@ describe('NewtonMath', function () {
     }
     
     // Test with string expressions
-    for (op in tests) {
+    for (let op in tests) {
         createIt(op, tests[op][0], tests[op][1]);
     }
     
