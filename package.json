@@ -8,6 +8,7 @@
     "url": ""
   },
   "scripts": {
+    "test": "jasmine",
     "build": "babili newtonmath.js -o newtonmath-min.js -s"
   },
   "keywords": [
@@ -19,7 +20,8 @@
   "author": "Benjamin Pryke",
   "license": "MIT",
   "devDependencies": {
-    "babili": "^0.1.4"
+    "babili": "^0.1.4",
+    "jasmine": "^2.6.0"
   },
   "dependencies": {
     "xmlhttprequest": "^1.8.0"
