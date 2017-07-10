@@ -5,7 +5,7 @@
   "main": "newtonmath.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/benpryke/NewtonMath.js"
   },
   "scripts": {
     "test": "jasmine",
