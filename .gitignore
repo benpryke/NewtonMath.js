@@ -1,5 +1,8 @@
 # Node dependency files
 /node_modules
 
-# Node debug files
+# Npm debug files
 npm-debug.log*
+
+# Npm package-lock
+package-lock.json
