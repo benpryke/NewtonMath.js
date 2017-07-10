@@ -3,7 +3,7 @@
     
     // Dependencies
     if (typeof XMLHttpRequest === 'undefined') {
-        let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
     }
     
     // Newton API endpoints
