@@ -1,6 +1,11 @@
 (function () {
     'use strict';
     
+    // Dependencies
+    if (typeof XMLHttpRequest === 'undefined') {
+        let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+    }
+    
     // Newton API endpoints
     const ENDPOINTS = ['simplify', 'factor', 'derive', 'integrate', 'zeroes',
                        'tangent', 'area', 'cos', 'sin', 'tan', 'arccos',
@@ -15,7 +20,7 @@
             
             xhr.onload = function () {
                 if (this.status >= 200 && this.status < 300) {
-                    resolve(xhr.response);
+                    resolve(xhr.responseText);
                 } else {
                     reject({status: this.status, msg: xhr.statusText});
                 }
@@ -33,7 +38,7 @@
     function sendRequest (operation, expression, callback) {
         createPromise(operation, expression)
         .then(response => callback(handleResponse(JSON.parse(response))))
-        .catch(error => printError('HTTP status', error.status, error.msg));
+        .catch(error => printError('HTTP status', error.status, error));
     }
     
     function handleResponse (response) {

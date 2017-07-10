@@ -21,5 +21,7 @@
   "devDependencies": {
     "babili": "^0.1.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
 }
