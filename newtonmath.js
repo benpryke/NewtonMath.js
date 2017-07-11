@@ -1,22 +1,29 @@
 (function () {
     'use strict';
     
-    // Dependencies
-    if (typeof XMLHttpRequest === 'undefined') {
-        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-    }
-    
     // Newton API endpoints
     const ENDPOINTS = ['simplify', 'factor', 'derive', 'integrate', 'zeroes',
                        'tangent', 'area', 'cos', 'sin', 'tan', 'arccos',
                        'arcsin', 'arctan', 'abs', 'log'];
+    
+    let root = this,
+        prevNewtonMath = root.NewtonMath,
+        core = {},
+        NewtonMath = {};
+    
+    // Dependencies
+    if (typeof root.XMLHttpRequest === 'undefined') {
+        core.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+    } else {
+        core.XMLHttpRequest = root.XMLHttpRequest;
+    }
     
     // Core functions
     function createPromise (operation, expression) {
         return new Promise(function (resolve, reject) {
             let base = 'https://newton.now.sh/',
                 url = base + operation + '/' + encodeURIComponent(expression),
-                xhr = new XMLHttpRequest();
+                xhr = new core.XMLHttpRequest();
             
             xhr.onload = function () {
                 if (this.status >= 200 && this.status < 300) {
@@ -65,11 +72,6 @@
     function printError () {
         console.error('NewtonMath error:', ...arguments);
     }
-    
-    let root = this,
-        prevNewtonMath = root.NewtonMath,
-        core = {},
-        NewtonMath = {};
     
     // Expose the module
     if (typeof exports !== 'undefined') {
