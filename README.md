@@ -28,9 +28,9 @@ See the [newton API GitHub repo](https://github.com/aunyks/newton-api) for the f
 ```JavaScript
 newton = require('newtonmath.js');
 
-newton.derive('x^2', r => console.log(r)); # -> '2 x'
-newton.cos('pi', r => console.log(r)); # -> -1
-newton.zeroes('x^2+2x', r => console.log(r)); # -> [-2, 0]
+newton.derive('x^2', r => console.log(r)); // -> '2 x'
+newton.cos('pi', r => console.log(r)); // -> -1
+newton.zeroes('x^2+2x', r => console.log(r)); // -> [-2, 0]
 ```
 
 ### Browser
@@ -41,7 +41,7 @@ newton.zeroes('x^2+2x', r => console.log(r)); # -> [-2, 0]
 
 <!-- In <body> or script file -->
 <script>
-NewtonMath.derive('x^2', r => console.log(r)); # -> '2 x'
+NewtonMath.derive('x^2', r => console.log(r)); // -> '2 x'
 </script>
 ```
 
