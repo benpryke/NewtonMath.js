@@ -58,12 +58,12 @@ newton = NewtonMath.noConflict();
 The following methods take optional extra arguments for convenience. As per the API, if these are not specified they must be included before a horizontal bar `'|'` in the expression for newton.
 
 ```JavaScript
-newton.log('2|8', r => console.log(r)); # -> 3
-newton.log(8, 2, r => console.log(r)); # -> 3
+newton.log('2|8', r => console.log(r)); // -> 3
+newton.log(8, 2, r => console.log(r)); // -> 3
 
-newton.tangent('2|x^3', r => console.log(r)); # -> '12 x + -16'
-newton.tangent('x^3', 2, r => console.log(r)); # -> '12 x + -16'
+newton.tangent('2|x^3', r => console.log(r)); // -> '12 x + -16'
+newton.tangent('x^3', 2, r => console.log(r)); // -> '12 x + -16'
 
-newton.area('2:4|x^3', r => console.log(r)); # -> 60
-newton.area('x^3', 2, 4, r => console.log(r)); # -> 60
+newton.area('2:4|x^3', r => console.log(r)); // -> 60
+newton.area('x^3', 2, 4, r => console.log(r)); // -> 60
 ```
