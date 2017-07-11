@@ -37,7 +37,7 @@ newton.zeroes('x^2+2x', r => console.log(r)); // -> [-2, 0]
 
 ```html
 <!-- In <head> -->
-<script src="newtonmath.js"></script>
+<script src="newtonmath-min.js"></script>
 
 <!-- In <body> or script file -->
 <script>
@@ -66,4 +66,18 @@ newton.tangent('x^3', 2, r => console.log(r)); // -> '12 x + -16'
 
 newton.area('2:4|x^3', r => console.log(r)); // -> 60
 newton.area('x^3', 2, 4, r => console.log(r)); // -> 60
+```
+
+## Building and testing
+
+Build the minified file and source map with babili:
+
+```sh
+npm run-script build
+```
+
+Run tests with Jasmine:
+
+```sh
+npm test
 ```

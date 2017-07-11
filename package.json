@@ -1,6 +1,6 @@
 {
   "name": "newtonmath.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "JavaScript wrapper for the newton math API",
   "main": "newtonmath.js",
   "repository": {
